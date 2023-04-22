@@ -1,24 +1,42 @@
-# README
+# INASAKU
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+INASAKU のバックエンド実装
 
-Things you may want to cover:
+## 環境構築手順
 
-* Ruby version
+### 必須ツール
 
-* System dependencies
+- Docker
+- docker-compose
 
-* Configuration
+### クローンする
 
-* Database creation
+git cloneして作業ディレクトリまで移動します。
+```
+$ git clone https://gitlab.inn-farm.jp/tonosama/inasaku-project.git
+$ cd inasaku-project/source/inasaku
+```
 
-* Database initialization
+### docker立ち上げ
 
-* How to run the test suite
+作業ディレクトリで以下を実行して、コンテナをビルドして開始します。
+```
+$ docker-compose build
+$ docker-compose up
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### webコンテナ内のbashシェルにアクセス
 
-* Deployment instructions
+以下のコマンドを実行して、Web コンテナの bash シェルにアクセスします。
+```
+$ docker-compose exec web bash
+```
 
-* ...
+
+### データベースの作成
+
+bash シェルにアクセスしたら、以下のコマンドを実行してデータベースを作成します。
+```
+$ rails db:create
+$ rails db:migrate
+```
